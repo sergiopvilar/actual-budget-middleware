@@ -1,3 +1,4 @@
 .env
-.actual
 node_modules
+.actual/*
+!.actual/.gitkeep
