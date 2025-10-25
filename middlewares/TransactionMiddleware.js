@@ -1,12 +1,13 @@
 const ApiMiddleware = require('./ApiMiddleware');
 
 class TransactionMiddleware {
-  constructor(date, amount, payee_name, category_id, notes = "") {
+  constructor(date, amount, payee_name, category_id, account_id = process.env.ACTUAL_ACCOUNT_ID, notes = "") {
     this.date = date;
     this.amount = amount;
     this.payee_name = payee_name;
     this.category_id = category_id;
     this.notes = notes;
+    this.account_id = account_id;
   }
 
   get transaction() {
@@ -25,7 +26,7 @@ class TransactionMiddleware {
       const api = await apiInstance.init();
       
       // Usar importTransactions em vez de addTransactions para melhor reconciliação
-      const result = await api.importTransactions(process.env.ACTUAL_ACCOUNT_ID, [this.transaction]);
+      const result = await api.importTransactions(this.account_id, [this.transaction]);
       
       return {
         success: true,
