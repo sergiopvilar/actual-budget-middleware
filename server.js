@@ -72,7 +72,7 @@ app.get('/api/get-categories', async (req, res) => {
 // Exemplo de endpoint adicional que usa a validação de token
 app.post('/api/add-transaction', async (req, res) => {
   try {
-    const { token, date, amount, payee_name, category_id, notes } = req.body;
+    const { token, date, amount, payee_name, category_id, account_id = process.env.ACTUAL_ACCOUNT_ID, notes = "" } = req.body;
     console.log(token)
     // Usar a classe TokenValidator para validar o token
     if (!TokenValidator.validateAndRespond(token, res)) {
@@ -84,7 +84,7 @@ app.post('/api/add-transaction', async (req, res) => {
       return;
     }
 
-    const transactionMiddleware = new TransactionMiddleware(date, amount, payee_name, category_id, notes);
+    const transactionMiddleware = new TransactionMiddleware(date, amount, payee_name, category_id, account_id, notes);
     const response = await transactionMiddleware.addTransaction();
 
     res.status(200).json({
