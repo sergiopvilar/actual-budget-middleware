@@ -1,4 +1,4 @@
-# Taro Actual Middleware
+# Actual Budget Middleware
 
 REST API middleware that enables integration with Actual Budget through HTTP endpoints. This application serves as a bridge between external services (in any programming language) and Actual Budget, providing a simple and secure interface for creating transactions and listing categories.
 
@@ -26,7 +26,7 @@ This middleware was created to allow applications in **any programming language*
 1. **Clone the repository:**
 ```bash
 git clone <repository-url>
-cd taro-actual-middleware
+cd actual-budget-middleware
 ```
 
 2. **Install dependencies:**
