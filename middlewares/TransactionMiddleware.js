@@ -13,7 +13,7 @@ class TransactionMiddleware {
   get transaction() {
     return {
       date: this.date,
-      amount: parseFloat(this.amount),
+      amount: parseInt(this.amount) * 100,
       payee_name: this.payee_name,
       category: this.category_id,
       notes: this.notes,
